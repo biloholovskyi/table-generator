@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 import './button.style.scss'
 
-type ButtonTheme = 'default' | 'small' | 'icon'
+type ButtonTheme = 'default' | 'small' | 'icon' | 'link'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string

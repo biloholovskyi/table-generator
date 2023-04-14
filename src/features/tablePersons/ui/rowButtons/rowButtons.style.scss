@@ -1,0 +1,10 @@
+.rowButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__delete {
+    margin-left: 53px;
+    color: #B0263D;
+  }
+}

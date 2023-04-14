@@ -3,5 +3,5 @@ export interface Person {
   surname: string
   age: string
   city: string
-  id?: string
+  id: string
 }

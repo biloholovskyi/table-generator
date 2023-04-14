@@ -25,4 +25,12 @@
     padding: 3.33px;
     background: transparent;
   }
+
+  &--link {
+    width: max-content;
+    padding: 0;
+    background: transparent;
+    text-decoration-line: underline;
+    color: #057AE3;
+  }
 }

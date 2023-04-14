@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../../../shared/hooks/useAppDispatch/useAppDi
 
 import { ReactComponent as CloseIcon } from '../../../../shared/assets/icon/close.svg'
 import { SvgIcon } from '../../../../shared/ui/svgIcon/svgIcon'
+import { RowButtons } from '../rowButtons/rowButtons'
 
 interface TablePersonsProps {
   personList: Person[]
@@ -25,7 +26,9 @@ export const TablePersons = memo((props: TablePersonsProps) => {
         <td>{person.surname}</td>
         <td>{person.age}</td>
         <td>{person.city}</td>
-        <td></td>
+        <td>
+          <RowButtons id={person.id} />
+        </td>
       </tr>
     ))
   }, [personList])

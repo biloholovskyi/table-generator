@@ -12,7 +12,7 @@ export const PersonSlice = createSlice({
   name: 'person',
   initialState,
   reducers: {
-    addPerson: (state, action: PayloadAction<Person>) => {
+    addPerson: (state, action: PayloadAction<Omit<Person, 'id'>>) => {
       state.personList.push({ ...action.payload, id: generateId() })
     },
     createClone: (state, action: PayloadAction<Person[]>) => {
