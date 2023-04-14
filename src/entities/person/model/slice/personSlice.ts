@@ -32,6 +32,15 @@ export const PersonSlice = createSlice({
         )
       }
     },
+    editRow: (state, action: PayloadAction<{ tableId: string; data: Person }>) => {
+      const { tableId, data } = action.payload
+      const tableIndex = state.tables.findIndex((table) => table.id === tableId)
+      if (tableIndex !== -1) {
+        state.tables[tableIndex].personList = state.tables[tableIndex].personList.map((person) =>
+          person.id === data.id ? data : person
+        )
+      }
+    },
   },
 })
 

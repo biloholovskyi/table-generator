@@ -5,3 +5,5 @@ export interface Person {
   city: string
   id: string
 }
+
+export interface PersonFormData extends Omit<Person, 'id'> {}

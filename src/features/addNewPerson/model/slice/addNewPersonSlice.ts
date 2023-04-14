@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { AddNewPersonSchema } from '../types/addNewPersonSchema'
+import { PersonFormData } from '../../../../entities/person'
 
 const initialState: AddNewPersonSchema = {
   name: '',
@@ -12,7 +13,7 @@ export const addNewPersonSlice = createSlice({
   name: 'addNewPerson',
   initialState,
   reducers: {
-    setInputValue: (state, action: PayloadAction<{ name: keyof Omit<AddNewPersonSchema, 'id'>; value: string }>) => {
+    setInputValue: (state, action: PayloadAction<{ name: keyof PersonFormData; value: string }>) => {
       state[action.payload.name] = action.payload.value
     },
   },
