@@ -8,6 +8,14 @@ import { addNewPersonActions } from '../../model/slice/addNewPersonSlice'
 import { AddNewPersonSchema } from '../../model/types/addNewPersonSchema'
 import { personActions } from '../../../../entitie/person'
 import { Button } from '../../../../shared/ui/button/button'
+import { Option, Selector } from '../../../../shared/ui/selector/selector'
+
+const cityOptions: Option[] = [
+  { label: 'Riga', value: 'Riga' },
+  { label: 'Daugavpils', value: 'Daugavpils' },
+  { label: 'Jūrmala', value: 'Jūrmala' },
+  { label: 'Ventspils', value: 'Ventspils' },
+]
 
 export const AddNewPerson = memo(() => {
   const name = useSelector(getName)
@@ -57,7 +65,15 @@ export const AddNewPerson = memo(() => {
         placeholder='Age'
         name='age'
       />
-      <Input onChange={onChangeInput} name='city' value={city} className='addNewPersonForm__input' placeholder='City' />
+      <Selector
+        selectedValue={city}
+        options={cityOptions}
+        onChange={(value: string) => {
+          dispatch(addNewPersonActions.setInputValue({ name: 'city', value }))
+        }}
+        label='City'
+        className='addNewPersonForm__input'
+      />
       <Button disabled={!isDisableButton()} className='addNewPersonForm__button'>
         ADD
       </Button>

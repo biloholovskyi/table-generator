@@ -1,17 +1,18 @@
 import { ChangeEvent, InputHTMLAttributes, memo, useCallback, useState } from 'react'
 import './input.style.scss'
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
   className?: string
   onChange?: (value: string, name: string) => void
   onlyNumber?: boolean
   name?: string
+  readonly?: boolean
 }
 
 export const Input = memo((props: InputProps) => {
-  const { className, placeholder, value, onChange, onlyNumber, name } = props
+  const { className, placeholder, value, onChange, onlyNumber, name, readonly, ...otherOptions } = props
 
   const [isFocus, setIsFocus] = useState(false)
 
@@ -41,6 +42,7 @@ export const Input = memo((props: InputProps) => {
 
   return (
     <input
+      readOnly={readonly}
       type='text'
       className={`input ${className}`}
       placeholder={placeholderString}
@@ -48,6 +50,7 @@ export const Input = memo((props: InputProps) => {
       onChange={onChangeHandler}
       onFocus={handleFocus}
       onBlur={handleBlur}
+      {...otherOptions}
     />
   )
 })

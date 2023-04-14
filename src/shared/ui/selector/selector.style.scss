@@ -1,0 +1,36 @@
+.selector {
+  position: relative;
+
+  &__options {
+    position: absolute;
+    top: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E6ECEF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 4px;
+    padding: 0 14px;
+  }
+
+  &__option {
+    width: 100%;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #868A8D;
+    transition: color .3s;
+    padding: 14px 0;
+    border-bottom: 1px solid #E6ECEF;
+    cursor: pointer;
+
+    &:last-child {
+      border: none
+    }
+
+    &:hover {
+      color: #212229;
+      font-weight: 700;
+    }
+  }
+}
