@@ -12,6 +12,7 @@ import {
   getEditSurname,
   getEditTableId,
 } from '../../model/selectors/getEditModalSelectors/getEditModalSelectors'
+import './editRowModal.scss'
 
 export const EditRowModal = memo(() => {
   const name = useSelector(getEditName)
@@ -43,6 +44,7 @@ export const EditRowModal = memo(() => {
   return (
     <Modal onClose={onClose}>
       <PersonForm
+        className='editFormModal'
         editType
         submit={saveChange}
         onChange={onChangeForm}

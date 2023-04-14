@@ -19,6 +19,7 @@ export const Selector = memo((props: SelectorProps) => {
   const { className, onChange, selectedValue, options, label } = props
 
   const [isOptionsOpen, setIsOptionsOpen] = useState(false)
+  const [isFocus, setIsFocus] = useState(false)
   const selectRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

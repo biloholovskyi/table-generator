@@ -16,10 +16,11 @@ interface PersonFormProps extends PersonFormData {
   onChange: (value: string, name: keyof PersonFormData) => void
   submit: () => void
   editType?: boolean
+  className?: string
 }
 
 export const PersonForm = memo((props: PersonFormProps) => {
-  const { name, surname, age, city, onChange, submit, editType } = props
+  const { name, surname, age, city, onChange, submit, editType, className } = props
 
   const onChangeInput = useCallback(
     (value: string, name: string) => {
@@ -46,7 +47,7 @@ export const PersonForm = memo((props: PersonFormProps) => {
   }
 
   return (
-    <form className='personForm' onSubmit={onSubmitForm}>
+    <form className={`personForm ${className}`} onSubmit={onSubmitForm}>
       <Input onChange={onChangeInput} name='name' value={name} className='personForm__input' placeholder='Name' />
       <Input
         onChange={onChangeInput}

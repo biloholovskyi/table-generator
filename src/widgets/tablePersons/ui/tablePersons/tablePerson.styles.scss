@@ -56,6 +56,10 @@
       height: 32px;
       word-wrap: break-word;
       max-width: 100%;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: #868A8D;
 
       &:last-child {
         padding: 9px 42px;
@@ -65,6 +69,36 @@
 
     .empty-row:last-child td {
       height: 72px;
+    }
+  }
+
+  @media(max-width: 1000px) {
+    .table__body {
+      td {
+        &:last-child {
+          padding: 9px 12px;
+        }
+      }
+    }
+  }
+
+  @media(max-width: 420px) {
+    .table__head {
+      th {
+        padding: 9px 6px 7px;
+        font-size: 10px;
+      }
+    }
+
+    .table__body {
+      td {
+        padding: 9px 6px;
+        font-size: 10px;
+
+        &:last-child {
+          padding: 9px 6px;
+        }
+      }
     }
   }
 }
