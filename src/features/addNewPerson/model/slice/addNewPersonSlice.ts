@@ -16,6 +16,12 @@ export const addNewPersonSlice = createSlice({
     setInputValue: (state, action: PayloadAction<{ name: keyof PersonFormData; value: string }>) => {
       state[action.payload.name] = action.payload.value
     },
+    clearForm: (state) => {
+      state.name = ''
+      state.surname = ''
+      state.age = ''
+      state.city = ''
+    },
   },
 })
 

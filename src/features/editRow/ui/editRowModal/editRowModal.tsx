@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react'
-import { AddNewForm, personActions, PersonFormData } from '../../../../entities/person'
+import { PersonForm, personActions, PersonFormData } from '../../../../entities/person'
 import { Modal } from '../../../../shared/ui/modal/modal'
 import { useAppDispatch } from '../../../../shared/hooks/useAppDispatch/useAppDispatch'
 import { editRowActions } from '../../model/slice/editRowSlice'
@@ -36,16 +36,13 @@ export const EditRowModal = memo(() => {
 
   const saveChange = useCallback(() => {
     dispatch(personActions.editRow({ tableId, data: { name, surname, age, city, id } }))
-    dispatch(editRowActions.setInputValue({ name: 'name', value: '' }))
-    dispatch(editRowActions.setInputValue({ name: 'surname', value: '' }))
-    dispatch(editRowActions.setInputValue({ name: 'age', value: '' }))
-    dispatch(editRowActions.setInputValue({ name: 'city', value: '' }))
+    dispatch(editRowActions.clearForm())
     dispatch(editRowActions.closeModal())
   }, [dispatch, name, surname, age, city, id, tableId])
 
   return (
     <Modal onClose={onClose}>
-      <AddNewForm
+      <PersonForm
         editType
         submit={saveChange}
         onChange={onChangeForm}

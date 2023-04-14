@@ -1,3 +1,3 @@
-import { Person } from '../../../../entities/person'
+import { PersonFormData } from '../../../../entities/person'
 
-export interface AddNewPersonSchema extends Omit<Person, 'id'> {}
+export interface AddNewPersonSchema extends PersonFormData {}

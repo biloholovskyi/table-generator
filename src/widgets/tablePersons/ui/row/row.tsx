@@ -1,8 +1,8 @@
 import { memo, useCallback } from 'react'
 import { RowButtons } from '../rowButtons/rowButtons'
-import { Person, personActions } from '../../../../person'
-import { editRowActions } from '../../../../../features/editRow'
-import { useAppDispatch } from '../../../../../shared/hooks/useAppDispatch/useAppDispatch'
+import { Person, personActions } from '../../../../entities/person'
+import { editRowActions } from '../../../../features/editRow'
+import { useAppDispatch } from '../../../../shared/hooks/useAppDispatch/useAppDispatch'
 
 interface RowProps {
   data: Person

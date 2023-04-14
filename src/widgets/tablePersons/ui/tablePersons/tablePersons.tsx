@@ -1,14 +1,14 @@
 import { memo, useMemo } from 'react'
 import './tablePerson.styles.scss'
-import { personActions } from '../../../../person'
-import { Button } from '../../../../../shared/ui/button/button'
-import { useAppDispatch } from '../../../../../shared/hooks/useAppDispatch/useAppDispatch'
-import { ReactComponent as CloseIcon } from '../../../../../shared/assets/icon/close.svg'
-import { SvgIcon } from '../../../../../shared/ui/svgIcon/svgIcon'
-import { Table } from '../../../../person/model/types/table'
+import { personActions } from '../../../../entities/person'
+import { Button } from '../../../../shared/ui/button/button'
+import { useAppDispatch } from '../../../../shared/hooks/useAppDispatch/useAppDispatch'
+import { ReactComponent as CloseIcon } from '../../../../shared/assets/icon/close.svg'
+import { SvgIcon } from '../../../../shared/ui/svgIcon/svgIcon'
+import { Table } from '../../../../entities/person/model/types/table'
 import { Row } from '../row/row'
 import { useSelector } from 'react-redux'
-import { EditRowModal, getEditModalStatus } from '../../../../../features/editRow'
+import { EditRowModal, getEditModalStatus } from '../../../../features/editRow'
 
 interface TablePersonsProps extends Table {
   className?: string

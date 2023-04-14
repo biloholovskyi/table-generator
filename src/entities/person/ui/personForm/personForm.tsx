@@ -1,5 +1,5 @@
 import { FormEvent, memo, useCallback } from 'react'
-import './addNewForm.style.scss'
+import './personFrom.style.scss'
 import { Input } from '../../../../shared/ui/input/input'
 import { Button } from '../../../../shared/ui/button/button'
 import { Option, Selector } from '../../../../shared/ui/selector/selector'
@@ -12,17 +12,13 @@ const cityOptions: Option[] = [
   { label: 'Ventspils', value: 'Ventspils' },
 ]
 
-interface AddNewPersonProps {
-  name: string
-  surname: string
-  age: string
-  city: string
+interface PersonFormProps extends PersonFormData {
   onChange: (value: string, name: keyof PersonFormData) => void
   submit: () => void
   editType?: boolean
 }
 
-export const AddNewForm = memo((props: AddNewPersonProps) => {
+export const PersonForm = memo((props: PersonFormProps) => {
   const { name, surname, age, city, onChange, submit, editType } = props
 
   const onChangeInput = useCallback(
@@ -50,20 +46,20 @@ export const AddNewForm = memo((props: AddNewPersonProps) => {
   }
 
   return (
-    <form className='addNewPersonForm' onSubmit={onSubmitForm}>
-      <Input onChange={onChangeInput} name='name' value={name} className='addNewPersonForm__input' placeholder='Name' />
+    <form className='personForm' onSubmit={onSubmitForm}>
+      <Input onChange={onChangeInput} name='name' value={name} className='personForm__input' placeholder='Name' />
       <Input
         onChange={onChangeInput}
         name='surname'
         value={surname}
-        className='addNewPersonForm__input'
+        className='personForm__input'
         placeholder='Surname'
       />
       <Input
         onChange={onChangeInput}
         onlyNumber
         value={age}
-        className='addNewPersonForm__input'
+        className='personForm__input'
         placeholder='Age'
         name='age'
       />
@@ -72,9 +68,9 @@ export const AddNewForm = memo((props: AddNewPersonProps) => {
         options={cityOptions}
         onChange={onChangeCity}
         label='City'
-        className='addNewPersonForm__input'
+        className='personForm__input'
       />
-      <Button disabled={!isDisableButton()} className='addNewPersonForm__button'>
+      <Button disabled={!isDisableButton()} className='personForm__button'>
         {editType ? 'AGREE' : 'ADD'}
       </Button>
     </form>
