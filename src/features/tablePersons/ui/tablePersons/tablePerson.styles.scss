@@ -1,0 +1,61 @@
+.tablePerson {
+  margin-top: 48px;
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .cloneBtn {
+      width: max-content;
+      margin-left: 22px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  .table__head {
+    th {
+      text-align: left;
+      background: #0A508B;
+      padding: 9px 12px 7px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: #FFFFFF;
+
+      span {
+        opacity: .5;
+      }
+
+      &:first-child {
+        border-top-left-radius: 2px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 2px;
+      }
+    }
+  }
+
+  .table__body {
+    td {
+      padding: 9px 12px;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E5E5E5;
+      border-right: 1px solid #E5E5E5;
+      height: 32px;
+    }
+
+    .empty-row:last-child td {
+      height: 72px;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+export type { Person } from './model/types/person'
+export { personReducer, personActions } from './model/slice/personSlice'
+export type { PersonSchema } from './model/types/personSchema'
+export { getPersonList } from './model/selectors/getPersonList/getPersonList'
+export { getCloneTable } from './model/selectors/getCloneTable/getCloneTable'

@@ -1,0 +1,15 @@
+.addNewPersonForm {
+  background: #FFFFFF;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  padding: 20px 16px;
+  width: 280px;
+
+  &__input {
+    margin-bottom: 16px;
+  }
+
+  &__button {
+    margin-top: 4px;
+  }
+}

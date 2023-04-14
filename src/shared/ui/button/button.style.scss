@@ -1,0 +1,28 @@
+.button {
+  cursor: pointer;
+  padding: 14px;
+  width: 100%;
+  border: none;
+  background: #1493FE;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFFFFF;
+
+  &:disabled {
+    background: #C2CBD1;
+    cursor: default;
+  }
+
+  &--small {
+    padding: 5px 16.5px;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+
+  &--icon {
+    padding: 3.33px;
+    background: transparent;
+  }
+}
