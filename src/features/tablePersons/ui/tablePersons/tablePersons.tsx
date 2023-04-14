@@ -1,21 +1,20 @@
 import { memo, useMemo } from 'react'
 import './tablePerson.styles.scss'
-import { Person, personActions } from '../../../../entitie/person'
+import { personActions } from '../../../../entitie/person'
 import { Button } from '../../../../shared/ui/button/button'
 import { useAppDispatch } from '../../../../shared/hooks/useAppDispatch/useAppDispatch'
 
 import { ReactComponent as CloseIcon } from '../../../../shared/assets/icon/close.svg'
 import { SvgIcon } from '../../../../shared/ui/svgIcon/svgIcon'
 import { RowButtons } from '../rowButtons/rowButtons'
+import { Table } from '../../../../entitie/person/model/types/table'
 
-interface TablePersonsProps {
-  personList: Person[]
+interface TablePersonsProps extends Table {
   className?: string
-  id?: string
 }
 
 export const TablePersons = memo((props: TablePersonsProps) => {
-  const { personList, className, id } = props
+  const { personList, className, id, origin } = props
 
   const dispatch = useAppDispatch()
 
@@ -27,7 +26,7 @@ export const TablePersons = memo((props: TablePersonsProps) => {
         <td>{person.age}</td>
         <td>{person.city}</td>
         <td>
-          <RowButtons id={person.id} />
+          <RowButtons rowId={person.id} tableId={id} />
         </td>
       </tr>
     ))
@@ -62,7 +61,7 @@ export const TablePersons = memo((props: TablePersonsProps) => {
           Clone
         </Button>
 
-        {id && (
+        {!origin && (
           <Button theme='icon' className='cloneBtn' onClick={() => deleteTable(id)}>
             <SvgIcon Svg={CloseIcon} />
           </Button>

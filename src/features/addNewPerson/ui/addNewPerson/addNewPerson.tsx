@@ -33,6 +33,10 @@ export const AddNewPerson = memo(() => {
     e.preventDefault()
     const newPerson = { name, surname, age, city }
     dispatch(personActions.addPerson(newPerson))
+    dispatch(addNewPersonActions.setInputValue({ name: 'name', value: '' }))
+    dispatch(addNewPersonActions.setInputValue({ name: 'surname', value: '' }))
+    dispatch(addNewPersonActions.setInputValue({ name: 'age', value: '' }))
+    dispatch(addNewPersonActions.setInputValue({ name: 'city', value: '' }))
   }
 
   return (

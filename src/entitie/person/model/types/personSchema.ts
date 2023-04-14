@@ -1,10 +1,5 @@
-import { Person } from './person'
+import { Table } from './table'
 
 export interface PersonSchema {
-  personList: Person[]
-  cloneTable: Table[]
-}
-
-export interface Table extends Omit<PersonSchema, 'cloneTable'> {
-  id: string
+  tables: Table[]
 }

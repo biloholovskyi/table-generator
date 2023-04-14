@@ -4,8 +4,7 @@ import { Person } from '../types/person'
 import { generateId } from '../../../../shared/lib/generateId/generateId'
 
 const initialState: PersonSchema = {
-  personList: [],
-  cloneTable: [],
+  tables: [],
 }
 
 export const PersonSlice = createSlice({
@@ -13,13 +12,25 @@ export const PersonSlice = createSlice({
   initialState,
   reducers: {
     addPerson: (state, action: PayloadAction<Omit<Person, 'id'>>) => {
-      state.personList.push({ ...action.payload, id: generateId() })
+      state.tables.find((table) => table.origin)?.personList.push({ ...action.payload, id: generateId() })
+    },
+    createOriginTable: (state) => {
+      state.tables = [{ personList: [], id: generateId(), origin: true }]
     },
     createClone: (state, action: PayloadAction<Person[]>) => {
-      state.cloneTable.push({ personList: action.payload, id: generateId() })
+      state.tables.push({ personList: action.payload, id: generateId() })
     },
     deleteTable: (state, action: PayloadAction<string>) => {
-      state.cloneTable = state.cloneTable.filter((table) => table.id !== action.payload)
+      state.tables = state.tables.filter((table) => table.id !== action.payload)
+    },
+    deleteRow: (state, action: PayloadAction<{ rowId: string; tableId: string }>) => {
+      const { tableId, rowId } = action.payload
+      const tableIndex = state.tables.findIndex((table) => table.id === tableId)
+      if (tableIndex !== -1) {
+        state.tables[tableIndex].personList = state.tables[tableIndex].personList.filter(
+          (person) => person.id !== rowId
+        )
+      }
     },
   },
 })
