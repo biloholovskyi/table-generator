@@ -1,4 +1,4 @@
-import { MutableRefObject, ReactNode, useCallback, MouseEvent, useRef, useState } from 'react'
+import { MutableRefObject, ReactNode, useCallback, MouseEvent, useRef, useState, useEffect } from 'react'
 import './modal.style.scss'
 
 interface ModalProps {
@@ -12,8 +12,6 @@ export const Modal = (props: ModalProps) => {
 
   const [isClosing, setIsClosing] = useState(false)
 
-  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
-
   const closeHandler = useCallback(() => {
     if (onClose) {
       setIsClosing(true)
@@ -23,6 +21,26 @@ export const Modal = (props: ModalProps) => {
       }, 300)
     }
   }, [onClose])
+
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeHandler()
+      }
+    },
+    [closeHandler]
+  )
+
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      clearTimeout(timerRef.current)
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [onKeyDown])
+
+  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
 
   const onBodyClick = (e: MouseEvent) => {
     e.stopPropagation()
